@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+.header_section {
+  padding-top: 20px;
+}
+
+h2 {
+  letter-spacing: 1.5px;
+}
+
+.header_section,
+.accordion_section {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  max-width: 758px;
+  padding-left: 20px;
+}
+
+.faq_card,
+.faq_container {
+  margin: 5px 0px;
+  padding: 5px 10px;
+  border: 1px solid rgba(223, 223, 223, 0.921);
+  border-radius: 5px;
+}
+
+.accordion__label,
+.accordion__content {
+  padding: 0px 20px;
+  line-height: 1.5;
+}
+
+/* Styles for the label of each accordion item */
+.accordion__label {
+  padding: 10px 20px; /* Adds padding around the text for better clickability and appearance */
+  display: block; /* Makes the label a block element to occupy the full width */
+  position: relative; /* Sets positioning context for the pseudo-element (::after) */
+  color: #1e272e;
+  font-weight: bolder;
+  cursor: pointer; /* Changes the mouse cursor to indicate the label is clickable */
+}
+
+/* Styles for the icon shown after the label, typically a "+" or "-" for collapse/expand */
+.accordion__label::after {
+  content: ""; /* Necessary for the pseudo-element to be generated */
+  position: absolute; /* Positions the icon relative to its parent (label) */
+  line-height: 1;
+  top: 50%; /* Centers the icon vertically */
+  transform: translateY(
+    -50%
+  ); /* Adjusts the icon's position to be perfectly centered */
+  right: 20px;
+  width: 15px;
+  height: 15px;
+  transition: transform 0.5s ease; /* Smooth transition for the rotate effect */
+  background-image: url("https://icon-library.com/images/collapse-expand-icon/collapse-expand-icon-29.jpg"); /* Icon image */
+  background-size: contain; /* Ensures the icon fits within the dimensions without distortion */
+  background-repeat: no-repeat; /* Prevents the icon from repeating */
+}
+
+/* Styles for the question text inside the accordion label */
+.faq_question {
+  font-weight: 500;
+  padding-right: 40px; /* Right padding to ensure text doesn't overlap the icon */
+}
+
+/* Initial styles for the accordion content, hidden by default */
+.accordion__content {
+  color: #1e272ede;
+  max-height: 0; /* Initially hides the content */
+  overflow: hidden; /* Ensures content exceeding the max-height is not visible */
+  transition: max-height 0.8s ease; /* Smooth transition for expanding and collapsing */
+  display: block; /* Ensures the content is a block-level element */
+}
+
+/* Styles for showing the accordion content when the input (checkbox) is checked */
+.accordion__input:checked ~ .accordion__content {
+  max-height: 1000px; /* Expands the content area. Adjust max-height according to content size */
+  display: block; /* Ensures the content is visible and block-level */
+}
+
+/* Hides the actual checkbox input as it's not directly interacted with */
+.accordion__input {
+  display: none;
+}
+
+/* Adjusts the icon's rotation when the accordion is expanded, indicating a state change */
+.accordion__input:checked ~ .accordion__label::after {
+  transform: translateY(-50%) rotate(180deg); /* Rotates the icon to indicate expanded state */
+  transition: transform 0.5s ease; /* Smooth transition for the rotation */
+}
+
+.faq_card:hover {
+  background-color: rgba(243, 243, 243, 0.921);
+}
+
+.accordion__input:checked ~ .accordion__content {
+  max-height: 1000px;
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.margin_bottom {
+  height: 100px;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+}
